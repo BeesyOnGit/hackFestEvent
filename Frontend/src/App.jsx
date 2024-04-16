@@ -1,7 +1,12 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Notes from "./Pages/Profs/Notes/Notes";
-import Sidebar from "./Component/SIdeBar/Sidebar.jsx";
+import Sidebar from "./Component/SideBar/Sidebar.jsx";
+import ReservationLab from "./Pages/Profs/Lab/ReservationLab.jsx";
+import Feed from "./Pages/Profs/Feed/Feed.jsx";
+import Prof from "./Pages/Profs/Prof.jsx";
+import "./Index.css";
+import "./App.css";
 
 function App() {
     return (
@@ -20,10 +25,10 @@ function App() {
                     {/* Protected Routes */}
 
                     {/* Prof Dash board */}
-                    <Route path="/prof" element={<></>}>
+                    <Route path="/prof" element={<Prof />}>
                         <Route path="notes" element={<Notes />} />
-                        <Route path="reservation-lab" element={<></>} />
-                        <Route path="feed" element={<></>} />
+                        <Route path="reservation-lab" element={<ReservationLab />} />
+                        <Route path="feed" element={<Feed />} />
                     </Route>
 
                     {/* student Dash board */}

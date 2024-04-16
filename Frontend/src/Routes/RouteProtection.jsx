@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
-import { autUserVerif } from "../MiddleWear/ApiMiddleWear";
+// import { autUserVerif } from "../MiddleWear/ApiMiddleWear";
 import { Contexts } from "../Contexts/Contexts";
+import { autUserVerif } from "../MiddelWear/apiMiddleWear";
 
 function RouteProtection({ children }) {
     const { refresh } = Contexts();
