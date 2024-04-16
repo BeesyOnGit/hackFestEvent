@@ -1,24 +1,31 @@
-import Navbar from "./Component/SIdeBar/SIdebar";
 import React from "react";
-import SIdebar from "./Component/SIdeBar/SIdebar";
 import { Route, Routes } from "react-router-dom";
+import Notes from "./Pages/Profs/Notes/Notes";
+import Sidebar from "./Component/SIdeBar/Sidebar.jsx";
+
 function App() {
     return (
         <div>
-            <SIdebar />
+            <Sidebar />
             <div>
                 <Routes>
                     {/* Not protected Routes */}
+
                     {/* Home Page */}
-                    <Route path="/" element={<></>} />
+                    <Route path="/" element={<>Home</>} />
+
                     {/* login Page */}
                     <Route path="/login" element={<></>} />
 
                     {/* Protected Routes */}
+
                     {/* Prof Dash board */}
                     <Route path="/prof" element={<></>}>
-                        <Route path="" element />
+                        <Route path="notes" element={<Notes />} />
+                        <Route path="reservation-lab" element={<></>} />
+                        <Route path="feed" element={<></>} />
                     </Route>
+
                     {/* student Dash board */}
                     <Route path="/stud" element={<></>}>
                         <Route path="" element />
