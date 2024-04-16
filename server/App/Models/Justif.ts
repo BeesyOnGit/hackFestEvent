@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-const NotesSchema = new mongoose.Schema<NotesType>({
+const JustifSchema = new mongoose.Schema<JustifType>({
     time: {
         type: Number,
         required: true,
@@ -16,10 +16,10 @@ const NotesSchema = new mongoose.Schema<NotesType>({
     },
 });
 
-const NotesModel: mongoose.Model<NotesType> = mongoose.model<NotesType>("Notes", NotesSchema);
-export default NotesModel;
+const JustifModel: mongoose.Model<JustifType> = mongoose.model<JustifType>("Justif", JustifSchema);
+export default JustifModel;
 
-export type NotesType = {
+export type JustifType = {
     photo: string;
     time: number;
     createdAt?: number;

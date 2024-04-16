@@ -5,7 +5,6 @@ import cryptoJs from "crypto-js";
 import dotenv from "dotenv";
 import { writeFile } from "fs";
 import AdminModel from "../Models/Users";
-import LogsModel, { logsType } from "../Models/Logs";
 
 dotenv.config();
 
@@ -43,10 +42,6 @@ export const AuthVerification = async (req: Request, res: Response, next: NextFu
         if (!isUser) {
             return res.json({ code: "01" });
         }
-
-        // if (!hasConfig) {
-        //     return res.json({ code: "039" });
-        // }
 
         headers.verifiedID = isUser._id;
 
@@ -174,20 +169,6 @@ export const urlToFile = ({ url, name }: { url: any; name?: String }) => {
     // let file = new File([dataArr], `${name}.jpg`, { type: mime });
 
     // return file;
-};
-
-export const AddToDailyActivity = async (obj: logsType) => {
-    try {
-        const Dailyadded = await LogsModel.create(obj);
-
-        if (!Dailyadded) {
-            return false;
-        }
-
-        return true;
-    } catch (error) {
-        console.log(error);
-    }
 };
 
 export function filterEditedObject(befor: any, edited: Object) {

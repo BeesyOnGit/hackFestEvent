@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-const NotesSchema = new mongoose.Schema<NotesType>({
+const SchedulSchema = new mongoose.Schema<SchedulType>({
     grp: {
         type: Number,
         required: true,
@@ -20,10 +20,10 @@ const NotesSchema = new mongoose.Schema<NotesType>({
     },
 });
 
-const NotesModel: mongoose.Model<NotesType> = mongoose.model<NotesType>("Notes", NotesSchema);
-export default NotesModel;
+const SchedulModel: mongoose.Model<SchedulType> = mongoose.model<SchedulType>("Schedul", SchedulSchema);
+export default SchedulModel;
 
-export type NotesType = {
+export type SchedulType = {
     photo: string;
     grp: number;
     section: number;

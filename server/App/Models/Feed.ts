@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-const NotesSchema = new mongoose.Schema<NotesType>({
+const FeedSchema = new mongoose.Schema<FeedType>({
     title: {
         type: String,
         required: true,
@@ -24,10 +24,10 @@ const NotesSchema = new mongoose.Schema<NotesType>({
     },
 });
 
-const NotesModel: mongoose.Model<NotesType> = mongoose.model<NotesType>("Notes", NotesSchema);
-export default NotesModel;
+const FeedModel: mongoose.Model<FeedType> = mongoose.model<FeedType>("Feed", FeedSchema);
+export default FeedModel;
 
-export type NotesType = {
+export type FeedType = {
     title: string;
     time: number;
     description: string;

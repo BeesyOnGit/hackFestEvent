@@ -1,25 +1,40 @@
 import { Response, Request } from "express";
-import { AddToDailyActivity, EncriptedStringsCompare, Headers, TokenVerifier, generateToken } from "../MiddleWear/ServerFunctions";
+import { Headers, TokenVerifier, generateToken } from "../MiddleWear/ServerFunctions";
 import dotenv from "dotenv";
-import AdminModel, { adminType } from "../Models/Users";
+import UserModel, { UsersType } from "../Models/Users";
 import { FilterQuery } from "mongoose";
 dotenv.config();
 
-export const login = async (req: Request, res: Response) => {
+export const register = async (req: Request, res: Response) => {
     const { body } = req;
-    const { email, password } = body;
-    const filter = { email };
 
     try {
-        const isUser = await AdminModel.findOne(filter);
+        const createUser = await UserModel.create(body);
+
+        if (!createUser) {
+            return res.json({ code: "07" });
+        }
+
+        return res.json({ code: "12" });
+    } catch (error) {
+        console.log("🚀 ~ file: AuthControllers.ts:20 ~ register ~ error:", error);
+    }
+};
+export const login = async (req: Request, res: Response) => {
+    const { body } = req;
+    const { id, ddn } = body;
+    const filter = { _id: id };
+
+    try {
+        const isUser = await UserModel.findOne(filter);
 
         if (!isUser) {
             return res.json({ code: "01" });
         }
 
-        const { password: dbPass, _id } = isUser;
+        const { ddn: dbDdn, _id } = isUser;
 
-        if (!EncriptedStringsCompare(dbPass, password)) {
+        if (ddn !== dbDdn) {
             return res.json({ code: "02" });
         }
 
@@ -43,22 +58,20 @@ export const userAuth = async (req: Request, res: Response) => {
         const verifiedToken: any = TokenVerifier(authorizationtoken);
 
         if (!verifiedToken) {
-            return res.json({ code: "ET" });
+            return res.json({ code: "05" });
         }
 
         const { id: _id } = verifiedToken;
-        const filter: FilterQuery<adminType> = { _id };
+        const filter: FilterQuery<UsersType> = { _id };
 
-        const findClient = await AdminModel.findOne(filter);
-        if (findClient) {
-            data.auth = true;
+        const findUser = await UserModel.findOne(filter);
+        if (!findUser) {
+            return res.json({ code: "01" });
         }
 
-        if (!findClient) {
-            return res.json({ code: "E03" });
-        }
+        data.auth = true;
 
-        return res.json({ code: "S04", data });
+        return res.json({ code: "13", data });
     } catch (error: any) {
         console.log("🚀 ~ file: AuthControllers.ts:248 ~ userAuth ~ error:", error);
         return res.json({ code: "EO", error: error.message });

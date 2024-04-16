@@ -6,9 +6,11 @@ import compression from "compression";
 import cors from "cors";
 import { DbConnection } from "./DBConnection";
 import AuthRoutes from "./Routes/AuthRoutes";
-import TrainingRoutes from "./Routes/TrainingRoutes";
-import UtilsRoutes from "./Routes/UtilsRoutes";
-import ProjectRoutes from "./Routes/ProjectRoutes";
+import UserRoutes from "./Routes/UsersRoutes";
+import NotesRoutes from "./Routes/NotesRoutes";
+import SchedulRoutes from "./Routes/SchedulRoutes";
+import JustifRoutes from "./Routes/JustifRoutes";
+import FeedRoutes from "./Routes/FeedRoutes";
 
 dotenv.config();
 
@@ -21,7 +23,7 @@ http.createServer(app);
 
 //Db connection//
 
-DbConnection("portfolioDB", "mongodb://127.0.0.1:27017");
+DbConnection("telemcenInfoDepDB", "mongodb://127.0.0.1:27017");
 //Midelware
 app.use((req: Request, res: Response, next: NextFunction) => {
     res.header("Access-Control-Allow-Credentials", "true");
@@ -53,9 +55,11 @@ app.use(cors({ origin: "*" }));
 
 //************************************ # API ROUTES # ****************************************//
 app.use("/auth", AuthRoutes);
-app.use("/trainings", TrainingRoutes);
-app.use("/projects", ProjectRoutes);
-app.use("/utils", UtilsRoutes);
+app.use("/user", UserRoutes);
+app.use("/note", NotesRoutes);
+app.use("/schedul", SchedulRoutes);
+app.use("/justif", JustifRoutes);
+app.use("/feed", FeedRoutes);
 
 //************************************ # SERVER PORT SET # ****************************************//
 
