@@ -68,10 +68,11 @@ export const userAuth = async (req: Request, res: Response) => {
         if (!findUser) {
             return res.json({ code: "01" });
         }
+        const { isProf } = findUser;
 
         data.auth = true;
 
-        return res.json({ code: "13", data });
+        return res.json({ code: "13", data: { ...data, isProf } });
     } catch (error: any) {
         console.log("🚀 ~ file: AuthControllers.ts:248 ~ userAuth ~ error:", error);
         return res.json({ code: "EO", error: error.message });
