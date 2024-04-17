@@ -1,12 +1,13 @@
 .navElemContainer {
     min-width: 9.0625rem;
     padding: 0.9375rem 0.625rem;
-    display: grid;
+    display: flex;
     grid-template-columns: 15% 85%;
     align-items: center;
+    justify-content: center;
     position: relative;
     gap: 0.625rem;
-    width: 100%;
+    width: 80%;
     background-color: #7522d6;
     transition: all 200ms ease-out;
 }
@@ -25,13 +26,13 @@
 .navSelected div {
     color: #ffffff;
     transition: all 300ms ease-out;
-    font-size: 0.9rem;
+    font-size: 0.9rem !important;
 }
 .navSelected::after {
     content: "";
-    width: 80%;
+    width: 95%;
     opacity: 0.5;
-    left: 10%;
+    /* left: 10%; */
     border-radius: 10px;
     height: 80%;
     background-color: #a06cdc;
