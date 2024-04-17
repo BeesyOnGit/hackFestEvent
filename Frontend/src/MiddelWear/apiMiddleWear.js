@@ -38,3 +38,27 @@ export const getNote = async (body) => {
         console.log("🚀 ~ file: apiMiddleWear.js:26 ~ addNote ~ error:", error);
     }
 };
+export const addFeed = async (body) => {
+    try {
+        const res = await axios.post(`${url}/feed`, body, { headers: { authauthorizationtoken: tok } });
+
+        if (!res) {
+            return console.log("no response received");
+        }
+        return res.data;
+    } catch (error) {
+        console.log("🚀 ~ file: apiMiddleWear.js:26 ~ addNote ~ error:", error);
+    }
+};
+export const getFeed = async (body) => {
+    try {
+        const res = await axios.get(`${url}/feed`, { headers: { authauthorizationtoken: tok } });
+
+        if (!res) {
+            return console.log("no response received");
+        }
+        return res.data;
+    } catch (error) {
+        console.log("🚀 ~ file: apiMiddleWear.js:26 ~ addNote ~ error:", error);
+    }
+};

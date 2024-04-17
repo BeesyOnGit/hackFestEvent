@@ -48,7 +48,7 @@ function Notes() {
                 <input className="input" type="text" name="module" placeholder="Module" onChange={onChange} />
                 <input className="input" type="number" name="note" placeholder="Note" onChange={onChange} />
                 <button className="button" onClick={submitForm}>
-                    soumettre
+                    Soumettre
                 </button>
             </div>
         </div>

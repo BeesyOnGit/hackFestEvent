@@ -1,17 +1,15 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Notes from "./Pages/Profs/Notes/Notes";
-import Sidebar from "./Component/SideBar/Sidebar.jsx";
 import ReservationLab from "./Pages/Profs/Lab/ReservationLab.jsx";
 import Feed from "./Pages/Profs/Feed/Feed.jsx";
 import Prof from "./Pages/Profs/Prof.jsx";
-import "./Index.css";
+// import "./Index.css";
 import "./App.css";
 
 function App() {
     return (
         <div>
-            <Sidebar />
             <div>
                 <Routes>
                     {/* Not protected Routes */}
@@ -42,3 +40,17 @@ function App() {
 }
 
 export default App;
+
+const navElems = { stud: [{ icon: "", name: "", link: "" }] };
+
+export const urlPath = (url) => {
+    const urlArr = url.split("/");
+    if (urlArr.length <= 2) {
+        return urlArr.join("/");
+    }
+    while (urlArr.length > 2) {
+        urlArr.pop();
+    }
+
+    return urlArr.join("/");
+};
