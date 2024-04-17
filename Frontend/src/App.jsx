@@ -6,6 +6,12 @@ import Feed from "./Pages/Profs/Feed/Feed.jsx";
 import Prof from "./Pages/Profs/Prof.jsx";
 // import "./Index.css";
 import "./App.css";
+import Accueil from "./Pages/Accueil/Accueil.jsx";
+import Login from "./Pages/Login/Login.jsx";
+import Stud from "./Pages/Stud/Stud.jsx";
+import Profile from "./Pages/Profile/Profile.jsx";
+import Resv from "./Pages/Resv/Resv.jsx";
+import Empo from "./Pages/Empo/Empo.jsx";
 
 function App() {
     return (
@@ -15,10 +21,10 @@ function App() {
                     {/* Not protected Routes */}
 
                     {/* Home Page */}
-                    <Route path="/" element={<>Home</>} />
+                    <Route path="/" element={<Accueil />} />
 
                     {/* login Page */}
-                    <Route path="/login" element={<></>} />
+                    <Route path="/login" element={<Login />} />
 
                     {/* Protected Routes */}
 
@@ -30,8 +36,10 @@ function App() {
                     </Route>
 
                     {/* student Dash board */}
-                    <Route path="/stud" element={<></>}>
-                        <Route path="" element />
+                    <Route path="/stud" element={<Stud />}>
+                        <Route path="" element={<Profile />} />
+                        <Route path="reservation" element={<Resv />} />
+                        <Route path="emploi" element={<Empo />} />
                     </Route>
                 </Routes>
             </div>
