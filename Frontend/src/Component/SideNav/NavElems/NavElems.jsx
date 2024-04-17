@@ -15,7 +15,7 @@ function NavElems({ icon, name, link }) {
     return (
         <div className={"navElemContainer " + isSelected[pathname]} onClick={() => navigate(link)}>
             <i className={icon}> </i>
-            <div> {name} </div>
+            <div style={{ zIndex: 2 }}> {name} </div>
         </div>
     );
 }

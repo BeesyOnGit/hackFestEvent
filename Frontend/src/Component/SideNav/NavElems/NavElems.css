@@ -10,16 +10,38 @@
     background-color: #7522d6;
     transition: all 200ms ease-out;
 }
+.navElemContainer > * {
+    color: #d6d1db;
+}
 .navElemContainer:hover {
     cursor: pointer;
-    background-color: #ffffff;
+    /* background-color: #ffffff; */
 }
-.navSelected {
-    background-color: #ffffff;
+.navSelected > * {
+    color: #ffffff;
+    transition: all 300ms ease-out;
+    /* font-size: 0.8rem; */
+}
+.navSelected div {
+    color: #ffffff;
+    transition: all 300ms ease-out;
+    font-size: 0.9rem;
+}
+.navSelected::after {
+    content: "";
+    width: 80%;
+    opacity: 0.5;
+    left: 10%;
+    border-radius: 10px;
+    height: 80%;
+    background-color: #a06cdc;
+    /* z-index: 2; */
+    position: absolute;
+    /* background-color: #ffffff; */
 }
 .navElemContainer div {
     text-transform: capitalize;
-    font-size: 0.9rem;
+    font-size: 0.7rem;
     font-weight: bold;
 }
 .navElemContainer i {

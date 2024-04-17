@@ -3,7 +3,6 @@ import { addFeed } from "../../../MiddelWear/ApiMiddleWear.js";
 
 function Feed() {
     const [feed, setFeed] = useState({});
-    console.log("🚀 ~ file: Feed.jsx:6 ~ Feed ~ feed:", feed);
 
     const onChange = (e) => {
         const tmp = { ...feed, [e.target.name]: e.target.name == "notif" ? JSON.parse(e.target.value) : e.target.value };
