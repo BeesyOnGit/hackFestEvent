@@ -79,6 +79,7 @@ export default function Side() {
                 <div
                     onClick={() => {
                         {
+                            console.log("r", document.querySelector(".SideBar"));
                             document.querySelector(".SideBar").classList.add("P");
                             setShowCheck(true);
                         }
@@ -220,6 +221,7 @@ export default function Side() {
                         onClick={() => {
                             {
                                 setAddJus(false);
+                                console.log(document.querySelector(".SideBar"));
                                 document.querySelector(".SideBar").classList.remove("P");
                                 setImage("");
                             }
